@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Prajakta {
@@ -27,16 +28,19 @@ public class Prajakta {
                 .build();
 
         List<String[]> data=obj.readAll();
-      //  var d=data.stream()
+        List<String[]> sales=new ArrayList<>();
+        var d=data.stream()
+                .filter(x->!x[2].equalsIgnoreCase("Sales_in_thousand"))
+                .mapToDouble(x->Double.parseDouble(x[2])).max().getAsDouble();
 
 
-        double Sales_in_thousand=data.stream()
-                .filter(x->(x[2].equals("Sales_inThousand")&&x[5].equals("Price_in_thousands")))
+       // int x=0;
+        data.stream()
+                .filter(x->!x[2].equalsIgnoreCase("Sales_in_thousand"))
+                .filter(x->Double.parseDouble(x[2]) >=d)
+                .forEach(x->sales.add(x));
+        System.out.println("Highest "+sales);
 
-                .mapToDouble(x->Double.parseDouble(x[2]))
-                .sum();
-
-        System.out.println("Total"+Sales_in_thousand);
 
 
 
