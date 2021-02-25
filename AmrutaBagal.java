@@ -11,7 +11,7 @@ import com.opencsv.CSVReaderBuilder;
 import com.opencsv.exceptions.CsvException;
 
 public class AmrutaBagal {
-  void Vehicledata()
+  void Vehicledata() throws IOException, CsvException
   {
     Reader reader= Files.newBufferedReader(Paths.get("Car_sales.csv"));
     CSVParser parser=new CSVParserBuilder()
