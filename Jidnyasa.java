@@ -36,7 +36,7 @@ public class Jidnyasa {
 
         data.stream()
                 .filter(x->x.equals(x[3]>"20"))
-                .forEach(x-> System.out.println());
+                .forEach(x-> System.out.println(x ));
 
     }
 }
