@@ -1,0 +1,18 @@
+ public class MayurRajput
+{
+public static void main(String[] args) throws IOException, CsvException {
+        Reader reader= Files.newBufferedReader(Paths.get("complaints.csv"));
+        CSVParser parser=new CSVParserBuilder()
+                .withSeparator(',')
+                .build();
+
+        CSVReader obj=new CSVReaderBuilder(reader)
+                .withCSVParser(parser)
+                .build();
+
+        List<String[]> data=obj.readAll();
+data.stream()
+  .
+filter(x->x[0].equalsIgnoreCase("Buick") || x[1].equalsIgnoreCase   ("Century") ).count().forEach(System.out::println) ;
+}
+}
